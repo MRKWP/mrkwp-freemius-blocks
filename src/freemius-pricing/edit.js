@@ -209,7 +209,7 @@ export default function Edit({ attributes, setAttributes }) {
 
                                 <div className="wp-block-kadence-advancedbtn kt-btn-align-left kt-btn-tablet-align-inherit kt-btn-mobile-align-center kt-btns-wrap">
                                         <div className="kt-btn-wrap">
-                                            <a className="kt-button button kt-btn-size-large kt-btn-style-basic mrkwp-freemius-checkout-btn buy-btn ugb-button" data-product-name={productName} data-plugin-id={pluginID} data-plan-id={planID} data-public-key={publicKey} data-license={licenseNumber} data-trial="false" target="_blank" href="javascript:void(0);" rel="noopener">
+                                            <a className="kt-button button kt-btn-size-large kt-btn-style-basic mrkwp-freemius-checkout-btn buy-btn ugb-button" data-product-name={productName} data-plugin-id={pluginID} data-plan-id={planID} data-public-key={publicKey} data-license={licenseNumber} data-trial="false" target="_blank" href="#" rel="noopener">
                                                 <RichText
                                                     tagName="span"
                                                     onChange={ ( priceButtonText ) => setAttributes({ priceButtonText })}
@@ -221,7 +221,7 @@ export default function Edit({ attributes, setAttributes }) {
                                         </div>
                                         { showTrialButton && (
                                             <div className="kt-btn-wrap">
-                                                <a target="_self" className="kt-button button kt-btn-size-large kt-btn-style-basic  mrkwp-freemius-checkout-btn trial-btn ugb-button" data-product-name={productName} data-plugin-id={pluginID} data-plan-id={planID} data-public-key={publicKey} data-license={licenseNumber} data-trial="free" href="javascript:void(0);" rel="noopener">
+                                                <a target="_self" className="kt-button button kt-btn-size-large kt-btn-style-basic  mrkwp-freemius-checkout-btn trial-btn ugb-button" data-product-name={productName} data-plugin-id={pluginID} data-plan-id={planID} data-public-key={publicKey} data-license={licenseNumber} data-trial="free" href="#" rel="noopener">
                                                     <RichText
                                                         tagName="span"
                                                         onChange={ ( trialPriceButtonText ) => setAttributes({ trialPriceButtonText })}
