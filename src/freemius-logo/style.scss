@@ -1,0 +1,19 @@
+/**
+* The following styles get applied both on the front of your site
+* and in the editor.
+*
+* Replace them with your own styles or remove the file completely.
+*/
+
+#pricing-copy .freemius {
+  padding-top: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.color-switch-dark #pricing-copy .freemius img{
+  background:rgba(255,255,255,0.9);
+  padding:10px;
+  border-radius: 8px;
+}

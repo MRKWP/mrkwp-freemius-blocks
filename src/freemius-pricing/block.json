@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "mrkwp/freemius-pricing-block",
+  "version": "0.1.0",
+  "title": "Freemius Pricing Block",
+  "category": "widgets",
+  "icon": "money-alt",
+  "description": "The freemius pricing table.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "showLifeTimeFee": {
+      "type": "boolean",
+      "default": false
+    },
+    "priceTitle": {
+      "type": "string",
+      "default": "Single Site"
+    },
+    "currency": {
+      "type": "string",
+      "default": "$"
+    },
+    "annualLicenseText": {
+      "type": "string",
+      "default": "Annual License"
+    },
+    "annualLicensePrice": {
+      "type": "string",
+      "default": "9.99"
+    },
+    "lifeTimeLicenseText": {
+      "type": "string",
+      "default": "Lifetime License"
+    },
+    "lifeTimeLicensePrice": {
+      "type": "string",
+      "default": "29.99"
+    },
+    "categoryID": {
+      "type": "number",
+      "default": "1"
+    },
+    "productName": {
+      "type": "string",
+      "default": "Gravity Forms Plugin for Divi Theme"
+    },
+    "pluginID" : {
+      "type": "string",
+      "default": ""
+    },
+    "planID" : {
+      "type": "string",
+      "default": ""
+    },
+    "publicKey": {
+      "type": "string",
+      "default": ""
+    },
+    "licenseNumber": {
+      "type": "string",
+      "default": ""
+    },
+    "priceButtonText": {
+      "type": "string",
+      "default": "Buy Now"
+    },
+    "showTrialButton": {
+      "type": "boolean",
+      "default": false
+    },
+    "trialPriceButtonText": {
+      "type": "string",
+      "default": "Free Trial"
+    }
+  },
+  "textdomain": "freemius-pricing",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
