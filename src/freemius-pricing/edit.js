@@ -12,15 +12,12 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { InspectorControls, useBlockProps, RichText } from '@wordpress/block-editor';
-import ServerSideRender from '@wordpress/server-side-render';
 import {
     TextControl,
     PanelBody,
     PanelRow,
-    SelectControl,
     ToggleControl,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -38,8 +35,24 @@ import { Fragment } from "react";
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit({ attributes, setAttributes, clientId }) {
-    const { showLifeTimeFee, priceTitle, currency, productName, annualLicenseText, annualLicensePrice, lifeTimeLicenseText, lifeTimeLicensePrice, pluginID, planID, publicKey, licenseNumber, priceButtonText,  showTrialButton, trialPriceButtonText } = attributes;
+export default function Edit({ attributes, setAttributes }) {
+    const { 
+        showLifeTimeFee,
+        priceTitle,
+        currency,
+        productName,
+        annualLicenseText,
+        annualLicensePrice,
+        lifeTimeLicenseText,
+        lifeTimeLicensePrice,
+        pluginID,
+        planID,
+        publicKey,
+        licenseNumber,
+        priceButtonText,
+        showTrialButton,
+        trialPriceButtonText
+    } = attributes;
 
     return (
         <Fragment>

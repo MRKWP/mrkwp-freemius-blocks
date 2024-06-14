@@ -20,7 +20,7 @@ import Block from './block.json';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( Block , {
+registerBlockType( Block.name , {
     /**
      * @see ./edit.js
      */
