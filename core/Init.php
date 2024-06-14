@@ -18,8 +18,8 @@ final class Init {
 	 */
 	public static function get_services() {
 		return array(
-			MRKWP_Freemius\Freemius\LogoBlock::class,
-			MRKWP_Freemius\Freemius\PricingBlock::class,
+			Blocks\Freemius\LogoBlock::class,
+			Blocks\Freemius\PricingBlock::class,
 		);
 	}
 
