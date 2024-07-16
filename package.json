@@ -1,5 +1,5 @@
 {
-	"name": "mrkwp-freemius",
+	"name": "mrkwp-freemius-blocks",
 	"version": "2.0.0",
 	"description": "Block and other build scripts for M R K WP Freemius Blocks Plugin",
 	"author": "M R K WP - Matt Knighton",
@@ -16,5 +16,6 @@
 	},
 	"dependencies": {
 		"@wordpress/scripts": "27.8.0"
-	}
+	},
+	"files": [ "mrkwp-freemius-blocks.php", "index.php", "lib", "core", "build", "assets" ]
 }
