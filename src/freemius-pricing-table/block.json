@@ -1,0 +1,71 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "mrkwp/freemius-pricing-table",
+	"version": "1.0.0",
+	"title": "Freemius Pricing Table",
+	"category": "widgets",
+	"icon": "money-alt",
+	"description": "Interactive Freemius pricing table with Annual/Lifetime toggle, highlighted plans, and checkout integration.",
+	"keywords": [ "freemius", "pricing", "table", "plans", "checkout" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Plans & Pricing"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": "Choose the plan that fits your needs. All plans include essential features to get you started, with options to scale as you grow. No hidden fees and the flexibility to change anytime."
+		},
+		"showToggle": {
+			"type": "boolean",
+			"default": true
+		},
+		"annualLabel": {
+			"type": "string",
+			"default": "Annual"
+		},
+		"lifetimeLabel": {
+			"type": "string",
+			"default": "Lifetime"
+		},
+		"defaultCycle": {
+			"type": "string",
+			"default": "annual"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"pluginId": {
+			"type": "string",
+			"default": ""
+		},
+		"publicKey": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"providesContext": {
+		"mrkwp/pluginId": "pluginId",
+		"mrkwp/publicKey": "publicKey",
+		"mrkwp/defaultCycle": "defaultCycle"
+	},
+	"textdomain": "mrkwp-freemius",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": [ "mrkwp-freemius-btn-listener" ]
+}

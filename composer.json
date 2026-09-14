@@ -1,18 +1,20 @@
 {
-    "name": "mrkwp/mrkwp-freemius-blocks",
-    "description": "MRK WP Website Core Functions",
-    "type": "project",
-    "license": "GPLv2",
-    "authors": [
-        {
-            "name": "MRK WP",
-            "email": "helpdesk@mrkwp.com"
-        }
-    ],
-    "config": {
-        "vendor-dir": "lib"
-    },
-    "autoload": {
-        "psr-4": {"MRKWP_Freemius\\": "./core"}
-    }
+	"name": "mrkwp/mrkwp-freemius-blocks",
+	"description": "MRK WP Website Core Functions",
+	"type": "project",
+	"license": "GPLv2",
+	"authors": [
+		{
+			"name": "MRK WP",
+			"email": "helpdesk@mrkwp.com"
+		}
+	],
+	"config": {
+		"vendor-dir": "lib"
+	},
+	"autoload": {
+		"psr-4": {
+			"MRKWP_Freemius\\": "./core"
+		}
+	}
 }

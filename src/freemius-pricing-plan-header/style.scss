@@ -1,0 +1,22 @@
+@use '../common.scss';
+
+.mrkwp-pricing-plan__header-wrapper {
+  text-align: left;
+  margin-bottom: 8px;
+
+  .mrkwp-pricing-plan__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--mrkwp-text);
+    margin: 0 0 6px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .mrkwp-pricing-plan__subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--mrkwp-text-muted);
+    margin: 0;
+  }
+}

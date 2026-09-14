@@ -1,23 +1,23 @@
 {
-  "$schema": "https://json.schemastore.org/block.json",
-  "apiVersion": 2,
-  "name": "mrkwp/freemius-logo",
-  "version": "0.1.0",
-  "title": "Freemius Logo",
-  "category": "widgets",
-  "icon": "saved",
-  "description": "Freemius Logo.",
-  "supports": {
-    "html": false
-  },
-  "attributes": {
-    "topText": {
-      "type": "string",
-      "default": "* All prices in $USD. These prices do not include local taxes."
-    }
-  },
-  "textdomain": "freemius-copy",
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "mrkwp/freemius-logo",
+	"version": "0.1.0",
+	"title": "Freemius Logo",
+	"category": "widgets",
+	"icon": "saved",
+	"description": "Freemius Logo.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"topText": {
+			"type": "string",
+			"default": "* All prices in $USD. These prices do not include local taxes."
+		}
+	},
+	"textdomain": "freemius-copy",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
 }

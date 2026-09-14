@@ -1,0 +1,31 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "mrkwp/freemius-pricing-plan-feature-item",
+	"version": "1.0.0",
+	"title": "Plan Feature Item",
+	"category": "widgets",
+	"parent": [ "mrkwp/freemius-pricing-plan-features" ],
+	"icon": "yes",
+	"description": "An individual feature row with highlight option and check icon.",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": "Feature description"
+		},
+		"isHighlighted": {
+			"type": "boolean",
+			"default": false
+		},
+		"isIncluded": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "mrkwp-freemius",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

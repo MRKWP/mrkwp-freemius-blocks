@@ -1,0 +1,115 @@
+@use '../common.scss';
+
+.mrkwp-pricing-table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 48px 20px;
+  box-sizing: border-box;
+
+  .mrkwp-pricing-table__header {
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+
+    .mrkwp-pricing-table__title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--mrkwp-text);
+      letter-spacing: -0.025em;
+      margin: 0 0 16px 0;
+
+      @media (max-width: 640px) {
+        font-size: 2rem;
+      }
+    }
+
+    .mrkwp-pricing-table__subtitle {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--mrkwp-text-muted);
+      margin: 0;
+    }
+  }
+
+  // Pill toggle switcher
+  .mrkwp-pricing-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 28px;
+
+    .mrkwp-pricing-toggle {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--mrkwp-toggle-bg);
+      padding: 4px;
+      border-radius: 9999px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+
+      .mrkwp-pricing-toggle__btn {
+        background: transparent;
+        border: none;
+        padding: 8px 24px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--mrkwp-text-muted);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        user-select: none;
+
+        &:focus-visible {
+          outline: 2px solid var(--mrkwp-accent);
+          outline-offset: 2px;
+        }
+
+        &.is-active {
+          background-color: var(--mrkwp-toggle-active-bg);
+          color: var(--mrkwp-toggle-active-text);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+      }
+    }
+  }
+
+  // Pricing Grid
+  .mrkwp-pricing-table__grid {
+    display: grid;
+    gap: 24px;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+
+    &.plans-count-1 {
+      grid-template-columns: minmax(320px, 440px);
+    }
+
+    &.plans-count-2 {
+      grid-template-columns: repeat(2, minmax(280px, 420px));
+      max-width: 880px;
+      margin-inline: auto;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &.plans-count-3 {
+      grid-template-columns: repeat(3, 1fr);
+
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

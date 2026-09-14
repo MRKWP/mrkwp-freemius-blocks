@@ -1,0 +1,46 @@
+@use '../common.scss';
+
+.mrkwp-pricing-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--mrkwp-text);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .mrkwp-feature-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.is-highlighted {
+    font-weight: 700;
+    color: var(--mrkwp-feature-highlight);
+
+    .mrkwp-feature-icon svg {
+      fill: var(--mrkwp-feature-highlight);
+    }
+  }
+
+  &.not-included {
+    color: var(--mrkwp-text-muted);
+    opacity: 0.6;
+    text-decoration: line-through;
+
+    .mrkwp-feature-icon svg {
+      stroke: var(--mrkwp-text-muted);
+    }
+  }
+}

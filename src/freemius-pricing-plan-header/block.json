@@ -1,0 +1,30 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "mrkwp/freemius-pricing-plan-header",
+	"version": "1.0.0",
+	"title": "Plan Header",
+	"category": "widgets",
+	"parent": [ "mrkwp/freemius-pricing-plan" ],
+	"icon": "heading",
+	"description": "Plan title and subtitle.",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Professional"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": "For freelancers and startups"
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"text": true
+		}
+	},
+	"textdomain": "mrkwp-freemius",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}
