@@ -32,6 +32,12 @@
 			"padding": true
 		}
 	},
+	"usesContext": [
+		"mrkwp/pluginId",
+		"mrkwp/publicKey",
+		"mrkwp/productName",
+		"mrkwp/defaultCycle"
+	],
 	"textdomain": "mrkwp-freemius",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css"

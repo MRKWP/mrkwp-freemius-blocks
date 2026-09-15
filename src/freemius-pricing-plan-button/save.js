@@ -20,11 +20,11 @@ export default function save( { attributes } ) {
 			<button
 				type="button"
 				className="mrkwp-freemius-checkout-btn"
-				data-plugin-id={ pluginId }
+				data-plugin-id={ pluginId || undefined }
 				data-plan-id={ planId }
-				data-public-key={ publicKey }
+				data-public-key={ publicKey || undefined }
 				data-license={ license }
-				data-product-name={ productName }
+				data-product-name={ productName || undefined }
 				data-trial={ isTrial ? 'true' : 'false' }
 				data-billing-cycle="annual"
 			>

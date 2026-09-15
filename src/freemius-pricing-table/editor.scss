@@ -1,9 +1,10 @@
 .wp-block-mrkwp-freemius-pricing-table {
-  .mrkwp-pricing-table__grid {
-    position: relative;
+	.mrkwp-pricing-table__layout,
+	.mrkwp-pricing-table__grid {
+		position: relative;
 
-    .block-editor-block-list__layout {
-      display: contents;
-    }
-  }
+		.block-editor-block-list__layout {
+			display: contents;
+		}
+	}
 }

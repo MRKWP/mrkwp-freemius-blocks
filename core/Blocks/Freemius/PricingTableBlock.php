@@ -40,6 +40,7 @@ class PricingTableBlock extends BaseController {
 	public function create_blocks() {
 		$block_types = array(
 			'freemius-pricing-table',
+			'freemius-pricing-table-header',
 			'freemius-pricing-plan',
 			'freemius-pricing-plan-header',
 			'freemius-pricing-plan-price',

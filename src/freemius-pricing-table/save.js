@@ -1,74 +1,23 @@
-import {
-	useBlockProps,
-	useInnerBlocksProps,
-	RichText,
-} from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const {
-		title,
-		subtitle,
-		showToggle,
-		annualLabel,
-		lifetimeLabel,
-		defaultCycle,
-		columns,
-	} = attributes;
+	const { defaultCycle, columns, pluginId, publicKey, productName } =
+		attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: `mrkwp-pricing-table-container columns-${ columns }`,
+		'data-plugin-id': pluginId || undefined,
+		'data-public-key': publicKey || undefined,
+		'data-product-name': productName || undefined,
+		'data-default-cycle': defaultCycle || 'annual',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps.save( {
-		className: `mrkwp-pricing-table__grid plans-count-${ columns }`,
+		className: `mrkwp-pricing-table__layout plans-count-${ columns }`,
 	} );
 
 	return (
 		<section { ...blockProps }>
-			<div className="mrkwp-pricing-table__header">
-				<RichText.Content
-					tagName="h2"
-					className="mrkwp-pricing-table__title"
-					value={ title }
-				/>
-				<RichText.Content
-					tagName="p"
-					className="mrkwp-pricing-table__subtitle"
-					value={ subtitle }
-				/>
-
-				{ showToggle && (
-					<div className="mrkwp-pricing-toggle-wrapper">
-						<div
-							className="mrkwp-pricing-toggle"
-							role="group"
-							aria-label="Billing cycle toggle"
-						>
-							<button
-								type="button"
-								className={ `mrkwp-pricing-toggle__btn ${
-									defaultCycle === 'annual' ? 'is-active' : ''
-								}` }
-								data-cycle="annual"
-							>
-								{ annualLabel }
-							</button>
-							<button
-								type="button"
-								className={ `mrkwp-pricing-toggle__btn ${
-									defaultCycle === 'lifetime'
-										? 'is-active'
-										: ''
-								}` }
-								data-cycle="lifetime"
-							>
-								{ lifetimeLabel }
-							</button>
-						</div>
-					</div>
-				) }
-			</div>
-
 			<div { ...innerBlocksProps } />
 		</section>
 	);

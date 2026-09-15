@@ -18,11 +18,13 @@ export default function Edit( { attributes, setAttributes, context } ) {
 		isTrial,
 	} = attributes;
 
-	// Check whether credentials exist on this button or parent table context
-	const hasCredentials = Boolean(
-		( pluginId || context[ 'mrkwp/pluginId' ] ) &&
-			( publicKey || context[ 'mrkwp/publicKey' ] )
-	);
+	const tablePluginId = context[ 'mrkwp/pluginId' ] || '';
+	const tablePublicKey = context[ 'mrkwp/publicKey' ] || '';
+	const tableProductName = context[ 'mrkwp/productName' ] || '';
+
+	const effectivePluginId = pluginId || tablePluginId;
+	const effectivePublicKey = publicKey || tablePublicKey;
+	const isInherited = ! pluginId && Boolean( tablePluginId );
 
 	const blockProps = useBlockProps( {
 		className: 'mrkwp-pricing-plan__button-wrap',
@@ -38,6 +40,69 @@ export default function Edit( { attributes, setAttributes, context } ) {
 					) }
 					initialOpen={ true }
 				>
+					{ effectivePluginId ? (
+						<div
+							style={ {
+								padding: '10px 12px',
+								backgroundColor: '#f0fdf4',
+								border: '1px solid #bbf7d0',
+								borderRadius: '6px',
+								marginBottom: '16px',
+								fontSize: '12px',
+								color: '#166534',
+								lineHeight: '1.4',
+							} }
+						>
+							<strong>
+								{ isInherited
+									? __(
+											'✓ Using Table Credentials:',
+											'mrkwp-freemius'
+									  )
+									: __(
+											'★ Using Button Override:',
+											'mrkwp-freemius'
+									  ) }
+							</strong>
+							<div>
+								{ __( 'Plugin ID: ', 'mrkwp-freemius' ) }
+								<code>{ effectivePluginId }</code>
+							</div>
+							<div>
+								{ __( 'Public Key: ', 'mrkwp-freemius' ) }
+								<code>
+									{ effectivePublicKey
+										? `${ effectivePublicKey.substring(
+												0,
+												10
+										  ) }…`
+										: __( 'None', 'mrkwp-freemius' ) }
+								</code>
+							</div>
+						</div>
+					) : (
+						<div
+							style={ {
+								padding: '10px 12px',
+								backgroundColor: '#fffbeb',
+								border: '1px solid #fde68a',
+								borderRadius: '6px',
+								marginBottom: '16px',
+								fontSize: '12px',
+								color: '#92400e',
+								lineHeight: '1.4',
+							} }
+						>
+							<strong>
+								⚠️ { __( 'Notice: ', 'mrkwp-freemius' ) }
+							</strong>
+							{ __(
+								'No Plugin ID or Public Key found. Set them on the parent Freemius Pricing Table block (or override below).',
+								'mrkwp-freemius'
+							) }
+						</div>
+					) }
+
 					<TextControl
 						label={ __( 'Plan ID', 'mrkwp-freemius' ) }
 						value={ planId }
@@ -67,10 +132,18 @@ export default function Edit( { attributes, setAttributes, context } ) {
 						onChange={ ( val ) =>
 							setAttributes( { productName: val } )
 						}
-						help={ __(
-							'Optional name used for analytics and tracking events.',
-							'mrkwp-freemius'
-						) }
+						placeholder={ tableProductName || '' }
+						help={
+							tableProductName && ! productName
+								? `${ __(
+										'Inherited from table: ',
+										'mrkwp-freemius'
+								  ) }${ tableProductName }`
+								: __(
+										'Optional name used for analytics and tracking events.',
+										'mrkwp-freemius'
+								  )
+						}
 					/>
 					<ToggleControl
 						label={ __( 'Free Trial Checkout', 'mrkwp-freemius' ) }
@@ -93,13 +166,13 @@ export default function Edit( { attributes, setAttributes, context } ) {
 					initialOpen={ false }
 				>
 					<p className="description">
-						{ hasCredentials
+						{ isInherited
 							? __(
-									'Inheriting credentials from parent table. You can override them below if this plan belongs to a different Freemius plugin.',
+									'Currently inheriting credentials from the parent Pricing Table. You can override them below if this plan uses a different Freemius plugin.',
 									'mrkwp-freemius'
 							  )
 							: __(
-									'Enter credentials here or set them once on the parent Pricing Table block.',
+									'Custom credentials for this button. Leave blank to inherit from the parent Pricing Table.',
 									'mrkwp-freemius'
 							  ) }
 					</p>
@@ -109,7 +182,7 @@ export default function Edit( { attributes, setAttributes, context } ) {
 						onChange={ ( val ) =>
 							setAttributes( { pluginId: val } )
 						}
-						placeholder={ context[ 'mrkwp/pluginId' ] || '' }
+						placeholder={ tablePluginId || '' }
 					/>
 					<TextControl
 						label={ __( 'Public Key Override', 'mrkwp-freemius' ) }
@@ -117,7 +190,7 @@ export default function Edit( { attributes, setAttributes, context } ) {
 						onChange={ ( val ) =>
 							setAttributes( { publicKey: val } )
 						}
-						placeholder={ context[ 'mrkwp/publicKey' ] || '' }
+						placeholder={ tablePublicKey || '' }
 					/>
 				</PanelBody>
 			</InspectorControls>

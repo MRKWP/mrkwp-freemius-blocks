@@ -30,14 +30,6 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "string",
-      "default": "Plans & Pricing"
-    },
-    "subtitle": {
-      "type": "string",
-      "default": "Choose the plan that fits your needs. All plans include essential features to get you started, with options to scale as you grow. No hidden fees and the flexibility to change anytime."
-    },
     "showToggle": {
       "type": "boolean",
       "default": true
@@ -65,11 +57,16 @@
     "publicKey": {
       "type": "string",
       "default": ""
+    },
+    "productName": {
+      "type": "string",
+      "default": ""
     }
   },
   "providesContext": {
     "mrkwp/pluginId": "pluginId",
     "mrkwp/publicKey": "publicKey",
+    "mrkwp/productName": "productName",
     "mrkwp/defaultCycle": "defaultCycle"
   },
   "textdomain": "mrkwp-freemius",

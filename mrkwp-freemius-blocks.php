@@ -7,7 +7,7 @@
  * Author URI:      https://www.mrkwp.com
  * Text Domain:     mrkwp-freemius
  * Domain Path:     /languages
- * Version:         2.0.0
+ * Version:         2.1.0
  *
  * @package mrk-freemius-blocks
  */
@@ -16,7 +16,7 @@
 defined( 'ABSPATH' ) or die( 'No Access!' );
 
 if ( ! defined( 'MRKWP_FREEMIUS_BLOCKS_VERSION' ) ) {
-	define( 'MRKWP_FREEMIUS_BLOCKS_VERSION', '2.0.0' );
+	define( 'MRKWP_FREEMIUS_BLOCKS_VERSION', '2.1.0' );
 }
 
 // Require once the Composer Autoload, or use PSR-4 fallback.

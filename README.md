@@ -24,6 +24,11 @@ A set of core blocks for Freemius users wanting to making pricing tables etc.
 
 ## Changelog
 
+### 2.1.0
+- Replaced header with a new type of block called Freemius Pricing Header.
+- Made the header able to be styled.
+- Made other areas able to be aligned.
+
 ### 2.0.0
 - Replaced legacy pricing block with the new `mrkwp/freemius-pricing-table` suite with modular InnerBlocks.
 - Added interactive Annual / Lifetime toggle with dynamic client-side price switching.

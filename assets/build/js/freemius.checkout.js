@@ -3,6 +3,7 @@
  *
  * Handles client-side switching between Annual and Lifetime pricing,
  * and launches the Freemius Checkout modal with proper plan and billing cycle attributes.
+ * Inherits Plugin ID, Public Key, and Product Name from the parent Pricing Table container.
  */
 (function() {
   'use strict';
@@ -58,6 +59,15 @@
           });
         });
       });
+
+      // If table specifies default cycle as lifetime, trigger it initially
+      var defaultCycle = table.getAttribute('data-default-cycle');
+      if (defaultCycle === 'lifetime') {
+        var lifetimeBtn = toggle.querySelector('.mrkwp-pricing-toggle__btn[data-cycle="lifetime"]');
+        if (lifetimeBtn && !lifetimeBtn.classList.contains('is-active')) {
+          lifetimeBtn.click();
+        }
+      }
     });
 
     // 2. Setup Checkout Button Click Listeners (Delegated)
@@ -70,13 +80,38 @@
     if (!btn) return;
     e.preventDefault();
 
-    var plugin_id = btn.getAttribute('data-plugin-id');
-    var plan_id = btn.getAttribute('data-plan-id');
-    var public_key = btn.getAttribute('data-public-key');
+    var table = btn.closest('.mrkwp-pricing-table-container');
+    var planCard = btn.closest('.mrkwp-pricing-plan');
+
+    // 1. Resolve Plugin ID: button override > table global
+    var btn_plugin_id = (btn.getAttribute('data-plugin-id') || '').trim();
+    var table_plugin_id = table ? (table.getAttribute('data-plugin-id') || '').trim() : '';
+    var plugin_id = btn_plugin_id || table_plugin_id;
+
+    // 2. Resolve Public Key: button override > table global
+    var btn_public_key = (btn.getAttribute('data-public-key') || '').trim();
+    var table_public_key = table ? (table.getAttribute('data-public-key') || '').trim() : '';
+    var public_key = btn_public_key || table_public_key;
+
+    // 3. Resolve Plan ID
+    var plan_id = (btn.getAttribute('data-plan-id') || '').trim();
+
+    // 4. Resolve License & Trial
     var license = btn.getAttribute('data-license') || '1';
     var trial = btn.getAttribute('data-trial');
     var billing_cycle = btn.getAttribute('data-billing-cycle') || 'annual';
-    var product_name = btn.getAttribute('data-product-name') || '';
+
+    // 5. Resolve Product Name: button override > table global > plan title
+    var btn_product_name = (btn.getAttribute('data-product-name') || '').trim();
+    var table_product_name = table ? (table.getAttribute('data-product-name') || '').trim() : '';
+    var product_name = btn_product_name || table_product_name;
+
+    if (!product_name && planCard) {
+      var titleEl = planCard.querySelector('.mrkwp-pricing-plan__title');
+      if (titleEl) {
+        product_name = titleEl.textContent.trim();
+      }
+    }
     var product_name_slug = product_name.toLowerCase().replace(/ /g, '-');
 
     if (trial === 'false') {
@@ -86,7 +121,12 @@
     }
 
     if (!plugin_id || !public_key) {
-      console.warn('[Freemius Pricing] Plugin ID or Public Key is missing from the checkout button.');
+      console.warn('[Freemius Pricing] Plugin ID or Public Key is missing from the checkout button and parent Pricing Table container.', {
+        btn_plugin_id: btn_plugin_id,
+        table_plugin_id: table_plugin_id,
+        btn_public_key: btn_public_key ? 'set' : 'missing',
+        table_public_key: table_public_key ? 'set' : 'missing'
+      });
       return;
     }
 

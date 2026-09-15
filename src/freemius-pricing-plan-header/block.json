@@ -16,15 +16,40 @@
 		"subtitle": {
 			"type": "string",
 			"default": "For freelancers and startups"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"titleTag": {
+			"type": "string",
+			"default": "h3"
 		}
 	},
 	"supports": {
 		"html": false,
 		"color": {
-			"text": true
+			"text": true,
+			"background": true,
+			"link": true,
+			"heading": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"fontFamily": true,
+			"fontWeight": true,
+			"fontStyle": true,
+			"textTransform": true,
+			"textDecoration": true,
+			"letterSpacing": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
 		}
 	},
 	"textdomain": "mrkwp-freemius",
 	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"
 }

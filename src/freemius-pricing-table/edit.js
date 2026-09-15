@@ -2,21 +2,18 @@ import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
 	useInnerBlocksProps,
-	RichText,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	RangeControl,
-	ToggleControl,
-	TextControl,
-} from '@wordpress/components';
+import { PanelBody, RangeControl, TextControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 import './editor.scss';
 import './style.scss';
 
-const ALLOWED_BLOCKS = [ 'mrkwp/freemius-pricing-plan' ];
+const ALLOWED_BLOCKS = [
+	'mrkwp/freemius-pricing-table-header',
+	'mrkwp/freemius-pricing-plan',
+];
 
 const DEFAULT_PLANS_TEMPLATE = [
 	// Plan 1: Starter
@@ -318,18 +315,40 @@ const DEFAULT_PLANS_TEMPLATE = [
 	],
 ];
 
+const DEFAULT_TABLE_TEMPLATE = [
+	[
+		'mrkwp/freemius-pricing-table-header',
+		{},
+		[
+			[
+				'core/heading',
+				{
+					level: 2,
+					content: __( 'Plans & Pricing', 'mrkwp-freemius' ),
+					textAlign: 'center',
+					className: 'mrkwp-pricing-table__title',
+				},
+			],
+			[
+				'core/paragraph',
+				{
+					content: __(
+						'Choose the plan that fits your needs. All plans include essential features to get you started, with options to scale as you grow. No hidden fees and the flexibility to change anytime.',
+						'mrkwp-freemius'
+					),
+					align: 'center',
+					className: 'mrkwp-pricing-table__subtitle',
+				},
+			],
+		],
+	],
+	DEFAULT_PLANS_TEMPLATE[ 0 ],
+	DEFAULT_PLANS_TEMPLATE[ 1 ],
+	DEFAULT_PLANS_TEMPLATE[ 2 ],
+];
+
 export default function Edit( { attributes, setAttributes, clientId } ) {
-	const {
-		title,
-		subtitle,
-		showToggle,
-		annualLabel,
-		lifetimeLabel,
-		defaultCycle,
-		columns,
-		pluginId,
-		publicKey,
-	} = attributes;
+	const { columns, pluginId, publicKey, productName } = attributes;
 
 	// Access inner blocks
 	const innerBlocks = useSelect(
@@ -340,19 +359,22 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 
 	// Handle automatic column removal / addition when slider changes
 	const handleColumnsChange = ( newCount ) => {
-		const currentCount = innerBlocks.length;
+		const planBlocks = innerBlocks.filter(
+			( block ) => block.name === 'mrkwp/freemius-pricing-plan'
+		);
+		const currentPlanCount = planBlocks.length;
 		setAttributes( { columns: newCount } );
 
-		if ( newCount < currentCount ) {
-			// Automatically remove extra blocks from the end
-			for ( let i = currentCount - 1; i >= newCount; i-- ) {
-				if ( innerBlocks[ i ] ) {
-					removeBlock( innerBlocks[ i ].clientId );
+		if ( newCount < currentPlanCount ) {
+			// Automatically remove extra plan blocks from the end
+			for ( let i = currentPlanCount - 1; i >= newCount; i-- ) {
+				if ( planBlocks[ i ] ) {
+					removeBlock( planBlocks[ i ].clientId );
 				}
 			}
-		} else if ( newCount > currentCount ) {
+		} else if ( newCount > currentPlanCount ) {
 			// Automatically create and insert new plan blocks
-			for ( let i = currentCount; i < newCount; i++ ) {
+			for ( let i = currentPlanCount; i < newCount; i++ ) {
 				const planTemplate =
 					DEFAULT_PLANS_TEMPLATE[ i ] || DEFAULT_PLANS_TEMPLATE[ 0 ];
 				const newPlanBlock = createBlock(
@@ -368,7 +390,7 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 						)
 					)
 				);
-				insertBlock( newPlanBlock, i, clientId );
+				insertBlock( newPlanBlock, undefined, clientId );
 			}
 		}
 	};
@@ -378,10 +400,10 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(
-		{ className: `mrkwp-pricing-table__grid plans-count-${ columns }` },
+		{ className: `mrkwp-pricing-table__layout plans-count-${ columns }` },
 		{
 			allowedBlocks: ALLOWED_BLOCKS,
-			template: DEFAULT_PLANS_TEMPLATE,
+			template: DEFAULT_TABLE_TEMPLATE,
 			templateLock: false,
 		}
 	);
@@ -404,62 +426,6 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 							'mrkwp-freemius'
 						) }
 					/>
-				</PanelBody>
-
-				<PanelBody
-					title={ __( 'Annual / Lifetime Toggle', 'mrkwp-freemius' ) }
-					initialOpen={ true }
-				>
-					<ToggleControl
-						label={ __( 'Show Billing Toggle', 'mrkwp-freemius' ) }
-						help={ __(
-							'Allows visitors to switch between Annual and Lifetime pricing.',
-							'mrkwp-freemius'
-						) }
-						checked={ showToggle }
-						onChange={ ( val ) =>
-							setAttributes( { showToggle: val } )
-						}
-					/>
-
-					{ showToggle && (
-						<>
-							<TextControl
-								label={ __(
-									'Annual Option Label',
-									'mrkwp-freemius'
-								) }
-								value={ annualLabel }
-								onChange={ ( val ) =>
-									setAttributes( { annualLabel: val } )
-								}
-							/>
-							<TextControl
-								label={ __(
-									'Lifetime Option Label',
-									'mrkwp-freemius'
-								) }
-								value={ lifetimeLabel }
-								onChange={ ( val ) =>
-									setAttributes( { lifetimeLabel: val } )
-								}
-							/>
-							<ToggleControl
-								label={ __(
-									'Default to Lifetime',
-									'mrkwp-freemius'
-								) }
-								checked={ defaultCycle === 'lifetime' }
-								onChange={ ( isLifetime ) =>
-									setAttributes( {
-										defaultCycle: isLifetime
-											? 'lifetime'
-											: 'annual',
-									} )
-								}
-							/>
-						</>
-					) }
 				</PanelBody>
 
 				<PanelBody
@@ -491,79 +457,22 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 						}
 						placeholder="pk_..."
 					/>
+					<TextControl
+						label={ __( 'Product Name', 'mrkwp-freemius' ) }
+						value={ productName || '' }
+						onChange={ ( val ) =>
+							setAttributes( { productName: val } )
+						}
+						help={ __(
+							'Product name used for analytics tracking and default plan labels.',
+							'mrkwp-freemius'
+						) }
+						placeholder={ __( 'e.g. My Plugin', 'mrkwp-freemius' ) }
+					/>
 				</PanelBody>
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="mrkwp-pricing-table__header">
-					<RichText
-						tagName="h2"
-						className="mrkwp-pricing-table__title"
-						value={ title }
-						onChange={ ( val ) => setAttributes( { title: val } ) }
-						placeholder={ __(
-							'Plans & Pricing',
-							'mrkwp-freemius'
-						) }
-					/>
-					<RichText
-						tagName="p"
-						className="mrkwp-pricing-table__subtitle"
-						value={ subtitle }
-						onChange={ ( val ) =>
-							setAttributes( { subtitle: val } )
-						}
-						placeholder={ __(
-							'Enter table description…',
-							'mrkwp-freemius'
-						) }
-					/>
-
-					{ showToggle && (
-						<div className="mrkwp-pricing-toggle-wrapper">
-							<div
-								className="mrkwp-pricing-toggle"
-								role="group"
-								aria-label={ __(
-									'Billing cycle toggle',
-									'mrkwp-freemius'
-								) }
-							>
-								<button
-									type="button"
-									className={ `mrkwp-pricing-toggle__btn ${
-										defaultCycle === 'annual'
-											? 'is-active'
-											: ''
-									}` }
-									onClick={ () =>
-										setAttributes( {
-											defaultCycle: 'annual',
-										} )
-									}
-								>
-									{ annualLabel }
-								</button>
-								<button
-									type="button"
-									className={ `mrkwp-pricing-toggle__btn ${
-										defaultCycle === 'lifetime'
-											? 'is-active'
-											: ''
-									}` }
-									onClick={ () =>
-										setAttributes( {
-											defaultCycle: 'lifetime',
-										} )
-									}
-								>
-									{ lifetimeLabel }
-								</button>
-							</div>
-						</div>
-					) }
-				</div>
-
 				<div { ...innerBlocksProps } />
 			</section>
 		</>

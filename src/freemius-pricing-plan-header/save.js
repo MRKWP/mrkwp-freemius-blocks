@@ -1,24 +1,33 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { title, subtitle } = attributes;
+	const { title, subtitle, textAlign, titleTag = 'h3' } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: 'mrkwp-pricing-plan__header-wrapper',
+		className: [
+			'mrkwp-pricing-plan__header-wrapper',
+			textAlign ? `has-text-align-${ textAlign }` : '',
+		]
+			.filter( Boolean )
+			.join( ' ' ),
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<RichText.Content
-				tagName="h3"
-				className="mrkwp-pricing-plan__title"
-				value={ title }
-			/>
-			<RichText.Content
-				tagName="p"
-				className="mrkwp-pricing-plan__subtitle"
-				value={ subtitle }
-			/>
+			{ title && (
+				<RichText.Content
+					tagName={ titleTag }
+					className="mrkwp-pricing-plan__title"
+					value={ title }
+				/>
+			) }
+			{ subtitle && (
+				<RichText.Content
+					tagName="p"
+					className="mrkwp-pricing-plan__subtitle"
+					value={ subtitle }
+				/>
+			) }
 		</div>
 	);
 }

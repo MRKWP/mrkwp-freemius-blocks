@@ -41,6 +41,7 @@
 	"usesContext": [
 		"mrkwp/pluginId",
 		"mrkwp/publicKey",
+		"mrkwp/productName",
 		"mrkwp/defaultCycle"
 	],
 	"supports": {
