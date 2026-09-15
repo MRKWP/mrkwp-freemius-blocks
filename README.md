@@ -24,6 +24,10 @@ A set of core blocks for Freemius users wanting to making pricing tables etc.
 
 ## Changelog
 
+### 2.1.1
+- Added in additional config for webpack for the admin UI.
+- Added in the editing tool and UI for the styler and tested. Now has theme color.
+
 ### 2.1.0
 - Replaced header with a new type of block called Freemius Pricing Header.
 - Made the header able to be styled.
