@@ -19,7 +19,8 @@ final class Init {
 	public static function get_services() {
 		return array(
 			Blocks\Freemius\LogoBlock::class,
-			Blocks\Freemius\PricingBlock::class,
+			Blocks\Freemius\PricingTableBlock::class,
+			Admin\StylingSettings::class,
 		);
 	}
 

@@ -1,0 +1,54 @@
+@use '../common.scss';
+
+.mrkwp-pricing-table-container {
+	width: 100%;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 48px 20px;
+	box-sizing: border-box;
+
+	// Grid layout containing the header and plan cards
+	.mrkwp-pricing-table__layout,
+	.mrkwp-pricing-table__grid {
+		display: grid;
+		gap: 24px;
+		align-items: stretch;
+		justify-content: center;
+		width: 100%;
+
+		// The Header block spans all columns in the grid
+		> .wp-block-mrkwp-freemius-pricing-table-header,
+		> .mrkwp-pricing-table__header {
+			grid-column: 1 / -1;
+			width: 100%;
+			margin-bottom: 32px;
+		}
+
+		&.plans-count-1 {
+			grid-template-columns: minmax(320px, 440px);
+		}
+
+		&.plans-count-2 {
+			grid-template-columns: repeat(2, minmax(280px, 420px));
+			max-width: 880px;
+			margin-inline: auto;
+
+			@media (max-width: 768px) {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		&.plans-count-3 {
+			grid-template-columns: repeat(3, 1fr);
+
+			@media (max-width: 992px) {
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			}
+
+			@media (max-width: 640px) {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+}

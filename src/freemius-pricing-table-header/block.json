@@ -1,0 +1,50 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "mrkwp/freemius-pricing-table-header",
+	"version": "1.0.0",
+	"title": "Pricing Table Header",
+	"category": "widgets",
+	"parent": [ "mrkwp/freemius-pricing-table" ],
+	"icon": "heading",
+	"description": "Header container for the pricing table allowing custom Heading and Paragraph blocks.",
+	"allowedBlocks": [ "core/heading", "core/paragraph" ],
+	"attributes": {
+		"showToggle": {
+			"type": "boolean",
+			"default": true
+		},
+		"annualLabel": {
+			"type": "string",
+			"default": "Annual"
+		},
+		"lifetimeLabel": {
+			"type": "string",
+			"default": "Lifetime"
+		},
+		"defaultCycle": {
+			"type": "string",
+			"default": "annual"
+		}
+	},
+	"usesContext": [
+		"mrkwp/showToggle",
+		"mrkwp/annualLabel",
+		"mrkwp/lifetimeLabel",
+		"mrkwp/defaultCycle"
+	],
+	"supports": {
+		"html": false,
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "mrkwp-freemius",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

@@ -1,0 +1,44 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "mrkwp/freemius-pricing-plan",
+	"version": "1.0.0",
+	"title": "Pricing Plan Card",
+	"category": "widgets",
+	"parent": [ "mrkwp/freemius-pricing-table" ],
+	"icon": "screenoptions",
+	"description": "An individual pricing plan card column with highlight option.",
+	"attributes": {
+		"isHighlighted": {
+			"type": "boolean",
+			"default": false
+		},
+		"badgeText": {
+			"type": "string",
+			"default": "MOST POPULAR PLAN"
+		},
+		"highlightColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true
+		}
+	},
+	"usesContext": [
+		"mrkwp/pluginId",
+		"mrkwp/publicKey",
+		"mrkwp/productName",
+		"mrkwp/defaultCycle"
+	],
+	"textdomain": "mrkwp-freemius",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

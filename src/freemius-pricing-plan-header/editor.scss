@@ -1,0 +1,24 @@
+// Editor-only styles for Freemius Plan Header
+// Provides comfortable padding and margins for editing usability in the block editor canvas.
+
+.mrkwp-pricing-plan__header-wrapper {
+	margin-bottom: 12px;
+
+	.mrkwp-pricing-plan__title {
+		margin-top: 0;
+		margin-bottom: 6px;
+
+		&:empty::before {
+			opacity: 0.6;
+		}
+	}
+
+	.mrkwp-pricing-plan__subtitle {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		&:empty::before {
+			opacity: 0.6;
+		}
+	}
+}

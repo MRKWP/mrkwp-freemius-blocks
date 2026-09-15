@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 3,
+  "name": "mrkwp/freemius-pricing-plan-button",
+  "version": "1.0.0",
+  "title": "Plan Checkout Button",
+  "category": "widgets",
+  "parent": [
+    "mrkwp/freemius-pricing-plan"
+  ],
+  "icon": "button",
+  "description": "Button to trigger the Freemius Checkout modal.",
+  "attributes": {
+    "buttonText": {
+      "type": "string",
+      "default": "Select plan"
+    },
+    "planId": {
+      "type": "string",
+      "default": ""
+    },
+    "pluginId": {
+      "type": "string",
+      "default": ""
+    },
+    "publicKey": {
+      "type": "string",
+      "default": ""
+    },
+    "license": {
+      "type": "string",
+      "default": "1"
+    },
+    "productName": {
+      "type": "string",
+      "default": ""
+    },
+    "isTrial": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "usesContext": [
+    "mrkwp/pluginId",
+    "mrkwp/publicKey",
+    "mrkwp/productName",
+    "mrkwp/defaultCycle"
+  ],
+  "supports": {
+    "html": false,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "textdomain": "mrkwp-freemius",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

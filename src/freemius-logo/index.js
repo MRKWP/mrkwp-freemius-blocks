@@ -20,14 +20,14 @@ import './style.scss';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( Block , {
-    /**
-     * @see ./edit.js
-     */
-    edit: Edit,
+registerBlockType( Block, {
+	/**
+	 * @see ./edit.js
+	 */
+	edit: Edit,
 
-    /**
-     * @see ./save.js
-     */
-    save,
-});
+	/**
+	 * @see ./save.js
+	 */
+	save,
+} );

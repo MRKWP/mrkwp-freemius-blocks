@@ -1,6 +1,6 @@
 {
 	"name": "mrkwp-freemius-blocks",
-	"version": "2.0.0",
+	"version": "2.1.1",
 	"description": "Block and other build scripts for M R K WP Freemius Blocks Plugin",
 	"author": "M R K WP - Matt Knighton",
 	"license": "GPL-2.0-or-later",
@@ -14,8 +14,24 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start"
 	},
-	"dependencies": {
-		"@wordpress/scripts": "27.8.0"
+	"files": [
+		"mrkwp-freemius-blocks.php",
+		"index.php",
+		"lib",
+		"core",
+		"build",
+		"assets"
+	],
+	"allowScripts": {
+		"@parcel/watcher@2.6.0": true,
+		"unrs-resolver@1.12.2": true,
+		"ejs@2.7.4": true,
+		"puppeteer@2.1.1": true,
+		"core-js@3.50.0": true,
+		"core-js-pure@3.50.0": true,
+		"fsevents@2.3.3": true
 	},
-	"files": [ "mrkwp-freemius-blocks.php", "index.php", "lib", "core", "build", "assets" ]
+	"devDependencies": {
+		"@wordpress/scripts": "^35.0.0"
+	}
 }

@@ -1,0 +1,475 @@
+// Admin Visual Studio Styling for Freemius Blocks
+
+.mrkwp-freemius-admin-wrap {
+	margin: 16px 20px 0 0 !important;
+	max-width: 100% !important;
+}
+
+.mrkwp-studio {
+	background: #ffffff;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+	// Header
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 24px;
+		background: #ffffff;
+		border-bottom: 1px solid #e2e8f0;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	&__brand {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	&__brand-icon {
+		font-size: 32px;
+		width: 32px;
+		height: 32px;
+		color: #2563eb;
+	}
+
+	&__title {
+		font-size: 1.25rem !important;
+		font-weight: 700 !important;
+		color: #0f172a !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		line-height: 1.2 !important;
+	}
+
+	&__subtitle {
+		font-size: 0.85rem;
+		color: #64748b;
+		margin: 3px 0 0 0;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+
+	&__preset-wrap {
+		min-width: 220px;
+
+		.components-base-control {
+			margin-bottom: 0;
+		}
+	}
+
+	&__save-btn {
+		min-width: 120px;
+	}
+
+	&__notice-area {
+		padding: 12px 24px 0 24px;
+	}
+
+	// Body Split
+	&__body {
+		display: grid;
+		grid-template-columns: 380px 1fr;
+		min-height: 720px;
+
+		@media (max-width: 1080px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	// Left Sidebar
+	&__sidebar {
+		background: #f8fafc;
+		border-right: 1px solid #e2e8f0;
+		display: flex;
+		flex-direction: column;
+		max-height: 850px;
+		overflow-y: auto;
+	}
+
+	&__tabs {
+		display: flex;
+		border-bottom: 1px solid #e2e8f0;
+		background: #f1f5f9;
+		overflow-x: auto;
+		scrollbar-width: thin;
+	}
+
+	&__tab-btn {
+		padding: 12px 14px;
+		border: none;
+		background: transparent;
+		color: #64748b;
+		font-size: 12px;
+		font-weight: 600;
+		cursor: pointer;
+		white-space: nowrap;
+		border-bottom: 2px solid transparent;
+		transition: all 0.15s ease;
+
+		&:hover {
+			color: #0f172a;
+			background: rgba(255, 255, 255, 0.5);
+		}
+
+		&.is-active {
+			color: #2563eb;
+			background: #ffffff;
+			border-bottom-color: #2563eb;
+		}
+	}
+
+	&__tab-content {
+		padding: 24px;
+		flex: 1;
+	}
+
+	&__section {
+		h3 {
+			font-size: 1rem;
+			font-weight: 700;
+			color: #0f172a;
+			margin: 0 0 18px 0;
+			padding-bottom: 8px;
+			border-bottom: 1px solid #e2e8f0;
+		}
+	}
+
+	// Right Canvas Panel
+	&__preview-panel {
+		display: flex;
+		flex-direction: column;
+		background: #f1f5f9;
+		overflow: hidden;
+	}
+
+	&__preview-toolbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px 20px;
+		background: #ffffff;
+		border-bottom: 1px solid #e2e8f0;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	&__toolbar-label {
+		font-size: 11px;
+		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: #94a3b8;
+		margin-right: 8px;
+	}
+
+	&__device-toggles,
+	&__canvas-bg-toggle {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	// Live Canvas
+	&__canvas {
+		flex: 1;
+		padding: 40px 24px;
+		overflow-y: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		transition: background-color 0.2s ease;
+
+		&--light {
+			background-color: #f8fafc;
+		}
+
+		&--dark {
+			background-color: #090d16;
+		}
+
+		&--checker {
+			background-color: #f1f5f9;
+			background-image: 
+				linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+				linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+				linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+				linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+			background-size: 20px 20px;
+			background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+		}
+	}
+}
+
+// Device Switcher Buttons
+.mrkwp-device-btn,
+.mrkwp-canvas-bg-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	background: #f8fafc;
+	border: 1px solid #cbd5e1;
+	border-radius: 6px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #475569;
+	cursor: pointer;
+	transition: all 0.15s ease;
+
+	.dashicons {
+		font-size: 15px;
+		width: 15px;
+		height: 15px;
+	}
+
+	&:hover {
+		background: #f1f5f9;
+		color: #0f172a;
+	}
+
+	&.is-active {
+		background: #2563eb;
+		border-color: #2563eb;
+		color: #ffffff;
+	}
+}
+
+// Preview Device Sizing
+.mrkwp-preview-device-wrap {
+	width: 100%;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	margin: 0 auto;
+
+	&.mrkwp-preview-device--desktop {
+		max-width: 1080px;
+	}
+
+	&.mrkwp-preview-device--tablet {
+		max-width: 768px;
+
+		.mrkwp-pricing-table__layout {
+			grid-template-columns: repeat(2, 1fr) !important;
+		}
+	}
+
+	&.mrkwp-preview-device--mobile {
+		max-width: 400px;
+
+		.mrkwp-pricing-table__layout {
+			grid-template-columns: 1fr !important;
+		}
+	}
+}
+
+// Color Field Component
+.mrkwp-color-field {
+	margin-bottom: 20px;
+
+	&__label-wrap {
+		margin-bottom: 6px;
+	}
+
+	&__label {
+		display: block;
+		font-size: 13px;
+		font-weight: 600;
+		color: #1e293b;
+		margin-bottom: 2px;
+	}
+
+	&__help {
+		font-size: 11px;
+		color: #64748b;
+		margin: 0;
+		line-height: 1.3;
+	}
+
+	&__controls {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 6px;
+	}
+
+	&__swatch {
+		width: 34px;
+		height: 34px;
+		border-radius: 8px;
+		border: 2px solid #ffffff;
+		box-shadow: 0 0 0 1px #cbd5e1, 0 1px 2px rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		padding: 0;
+		transition: transform 0.15s ease;
+
+		&:hover {
+			transform: scale(1.08);
+		}
+	}
+
+	&__input {
+		flex: 1;
+		height: 34px;
+		border: 1px solid #cbd5e1;
+		border-radius: 6px;
+		padding: 0 10px;
+		font-family: monospace;
+		font-size: 13px;
+		color: #334155;
+		background: #ffffff;
+
+		&:focus {
+			outline: none;
+			border-color: #2563eb;
+			box-shadow: 0 0 0 1px #2563eb;
+		}
+	}
+
+	&__popover {
+		padding: 0;
+	}
+}
+
+// Color Palette Modal Popover (Gutenberg Look & Feel)
+.mrkwp-color-popover {
+	.components-popover__content {
+		min-width: 280px;
+		max-width: 320px;
+		border-radius: 8px;
+		box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.mrkwp-palette-modal {
+	padding: 16px;
+	background: #ffffff;
+
+	&__preview-bar {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 8px 10px;
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		margin-bottom: 16px;
+		background: #f8fafc;
+	}
+
+	&__preview-swatch {
+		width: 32px;
+		height: 32px;
+		border-radius: 6px;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+		background-image: 
+			linear-gradient(45deg, #cbd5e1 25%, transparent 25%), 
+			linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), 
+			linear-gradient(45deg, transparent 75%, #cbd5e1 75%), 
+			linear-gradient(-45deg, transparent 75%, #cbd5e1 75%);
+		background-size: 8px 8px;
+		background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+	}
+
+	&__preview-info {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&__preview-val {
+		font-family: monospace;
+		font-size: 12px;
+		font-weight: 600;
+		color: #1e293b;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+	}
+
+	&__preview-actions {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	&__custom-picker {
+		margin-top: 8px;
+		display: flex;
+		justify-content: center;
+
+		.components-color-picker {
+			width: 100%;
+		}
+	}
+
+	&__palettes {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+}
+
+.mrkwp-palette-group {
+	&__title {
+		font-size: 11px;
+		font-weight: 700;
+		color: #475569;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		margin-bottom: 8px;
+	}
+}
+
+.mrkwp-palette-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 8px;
+	align-items: center;
+	justify-items: center;
+}
+
+.mrkwp-palette-circle {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	cursor: pointer;
+	padding: 0;
+	transition: transform 0.12s ease, box-shadow 0.12s ease;
+	position: relative;
+
+	&:hover {
+		transform: scale(1.15);
+		z-index: 2;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #2563eb;
+		outline-offset: 2px;
+	}
+
+	&.is-active {
+		box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #2563eb;
+		transform: scale(1.1);
+		z-index: 3;
+	}
+}
+
+.mrkwp-custom-shadow {
+	margin-top: 16px;
+
+	.mrkwp-color-field__input {
+		width: 100%;
+		margin-top: 6px;
+	}
+}

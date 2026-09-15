@@ -7,7 +7,7 @@
  * Author URI:      https://www.mrkwp.com
  * Text Domain:     mrkwp-freemius
  * Domain Path:     /languages
- * Version:         1.0.0
+ * Version:         2.1.1
  *
  * @package mrk-freemius-blocks
  */
@@ -16,12 +16,28 @@
 defined( 'ABSPATH' ) or die( 'No Access!' );
 
 if ( ! defined( 'MRKWP_FREEMIUS_BLOCKS_VERSION' ) ) {
-	define( 'MRKWP_FREEMIUS_BLOCKS_VERSION', '1.0.0' );
+	define( 'MRKWP_FREEMIUS_BLOCKS_VERSION', '2.1.1' );
 }
 
-// Require once the Composer Autoload.
+// Require once the Composer Autoload, or use PSR-4 fallback.
 if ( file_exists( __DIR__ . '/lib/autoload.php' ) ) {
 	require_once __DIR__ . '/lib/autoload.php';
+} else {
+	spl_autoload_register(
+		function ( $class ) {
+			$prefix   = 'MRKWP_Freemius\\';
+			$base_dir = __DIR__ . '/core/';
+			$len      = strlen( $prefix );
+			if ( strncmp( $prefix, $class, $len ) !== 0 ) {
+				return;
+			}
+			$relative_class = substr( $class, $len );
+			$file           = $base_dir . str_replace( '\\', '/', $relative_class ) . '.php';
+			if ( file_exists( $file ) ) {
+				require_once $file;
+			}
+		}
+	);
 }
 
 /**

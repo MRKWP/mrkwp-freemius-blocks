@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 3,
+  "name": "mrkwp/freemius-pricing-plan-features",
+  "version": "1.0.0",
+  "title": "Plan Features List",
+  "category": "widgets",
+  "parent": [
+    "mrkwp/freemius-pricing-plan"
+  ],
+  "icon": "list-view",
+  "description": "Container list for plan features.",
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "textdomain": "mrkwp-freemius",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

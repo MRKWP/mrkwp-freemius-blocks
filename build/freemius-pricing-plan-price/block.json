@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 3,
+  "name": "mrkwp/freemius-pricing-plan-price",
+  "version": "1.0.0",
+  "title": "Plan Price",
+  "category": "widgets",
+  "parent": [
+    "mrkwp/freemius-pricing-plan"
+  ],
+  "icon": "money-alt",
+  "description": "Plan pricing with Annual and Lifetime pricing parameters and currency symbol.",
+  "attributes": {
+    "isFree": {
+      "type": "boolean",
+      "default": false
+    },
+    "freeText": {
+      "type": "string",
+      "default": "Free"
+    },
+    "currency": {
+      "type": "string",
+      "default": "$"
+    },
+    "annualPrice": {
+      "type": "string",
+      "default": "15"
+    },
+    "annualPeriod": {
+      "type": "string",
+      "default": "/per user"
+    },
+    "lifetimePrice": {
+      "type": "string",
+      "default": "79"
+    },
+    "lifetimePeriod": {
+      "type": "string",
+      "default": "one-time"
+    }
+  },
+  "usesContext": [
+    "mrkwp/defaultCycle"
+  ],
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true
+    }
+  },
+  "textdomain": "mrkwp-freemius",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

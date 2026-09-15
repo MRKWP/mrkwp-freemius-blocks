@@ -1,0 +1,11 @@
+@use '../common.scss';
+
+.mrkwp-pricing-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 32px 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
