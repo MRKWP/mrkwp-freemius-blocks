@@ -20,6 +20,7 @@ final class Init {
 		return array(
 			Blocks\Freemius\LogoBlock::class,
 			Blocks\Freemius\PricingTableBlock::class,
+			Admin\StylingSettings::class,
 		);
 	}
 

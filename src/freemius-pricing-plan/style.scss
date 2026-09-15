@@ -6,7 +6,7 @@
   flex-direction: column;
   background-color: var(--mrkwp-bg);
   border: 1px solid var(--mrkwp-border);
-  border-radius: 24px;
+  border-radius: var(--mrkwp-card-radius, 24px);
   box-shadow: var(--mrkwp-card-shadow);
   box-sizing: border-box;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -43,8 +43,8 @@
       text-transform: uppercase;
       text-align: center;
       padding: 7px 16px;
-      border-top-left-radius: 21px;
-      border-top-right-radius: 21px;
+      border-top-left-radius: calc(var(--mrkwp-card-radius, 24px) - 3px);
+      border-top-right-radius: calc(var(--mrkwp-card-radius, 24px) - 3px);
       user-select: none;
     }
 

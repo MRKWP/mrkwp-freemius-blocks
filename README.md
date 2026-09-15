@@ -28,6 +28,7 @@ A set of core blocks for Freemius users wanting to making pricing tables etc.
 - Replaced header with a new type of block called Freemius Pricing Header.
 - Made the header able to be styled.
 - Made other areas able to be aligned.
+- make new styler area for the block configuration tool.
 
 ### 2.0.0
 - Replaced legacy pricing block with the new `mrkwp/freemius-pricing-table` suite with modular InnerBlocks.
